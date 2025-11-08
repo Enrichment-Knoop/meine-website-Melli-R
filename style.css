@@ -1,48 +1,144 @@
+/* --------------------------------------------------------------
+   style.css – Styling für „Amelie in Neuseeland“
+   -------------------------------------------------------------- */
+
+/* ---------- Farbvariablen ------------------------------------------------- */
+:root {
+    --primary-color:   #a0c4ff;   /* helles Blau – sommerlich */
+    --accent-color:    #ffb703;   /* warmes Gelb für Akzente */
+    --text-color:      #333333;   /* dunkles Grau für guten Kontrast */
+    --bg-color:        #f5faff;   /* sehr helles Blau als Seiten‑Hintergrund */
+}
+
+/* ---------- Basis‑Stile --------------------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    background-image: url('https://via.placeholder.com/200x200?text=Maori+Muster');
+    background-repeat: repeat;
 }
 
-header {
-  background: #005f99;
-  color: white;
-  padding: 1em 0;
-  text-align: center;
+/* ---------- Header & Banner ------------------------------------------------ */
+.site-header {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
 }
 
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: bold;
+/* Banner‑Bild füllt die gesamte Breite */
+.banner-image {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-main {
-  padding: 2em;
-  text-align: center;
+/* Große Überschrift im Banner */
+.site-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Brush Script MT', cursive;   /* einfache Schreibschrift */
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    margin: 0;
 }
 
-button {
-  padding: 10px 20px;
-  background: #005f99;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+/* ---------- Navigation ------------------------------------------------------ */
+.main-nav {
+    background-color: rgba(255,255,255,0.9);
+    padding: 0.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-button:hover {
-  background: #007acc;
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
 }
 
-footer {
-  text-align: center;
-  padding: 1em;
-  background: #eee;
-  margin-top: 2em;
-  font-size: 0.9em;
+.main-nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.main-nav a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ---------- Hauptinhalt ---------------------------------------------------- */
+.content {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Intro‑Bereich */
+.intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Portrait‑Bild – Polaroid‑Effekt */
+.portrait {
+    width: 200px;
+    border: 8px solid white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 1rem;
+}
+
+/* ---------- Footer ---------------------------------------------------------- */
+.site-footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 4rem;
+}
+
+/* Footer‑Link sichtbar machen */
+.site-footer a.footer-link {
+    color: #ffffff;               /* weiß auf blauem Hintergrund */
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Hover‑Effekt für Footer‑Link */
+.site-footer a.footer-link:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* ---------- Responsive Anpassungen ---------------------------------------- */
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 2rem;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }

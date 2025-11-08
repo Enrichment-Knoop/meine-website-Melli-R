@@ -1,40 +1,70 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine erste Website</title>
+    <title>Amelie in Neuseeland</title>
+
+    <!-- Verknüpfung zur gemeinsamen CSS‑Datei -->
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>Willkommen auf meiner Website</h1>
-      <nav>
-        <a href="#">Start</a>
-        <a href="#">Über mich</a>
-        <a href="#">Kontakt</a>
-      </nav>
+</head>
+<body>
+
+    <!-- ==================== Header (Banner + Navigation) ==================== -->
+    <header class="site-header">
+        <!-- Platzhalter‑Banner‑Bild -->
+        <img src="https://via.placeholder.com/1200x400?text=Banner+Bild"
+             alt="Banner von Neuseeland"
+             class="banner-image">
+
+        <!-- Große Überschrift im Banner -->
+        <h1 class="site-title">Amelie in Neuseeland</h1>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="neuseeland.html">Neuseeland</a></li>
+                <li><a href="an-abreise.html">An‑ und Abreise</a></li>
+                <li><a href="gastfamilie.html">Gastfamilie</a></li>
+                <li><a href="schule.html">Schule</a></li>
+                <li><a href="reisen-orte.html">Reisen & Orte</a></li>
+                <li><a href="kultur.html">Kultur</a></li>
+                <li><a href="natur.html">Natur</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
-      <section>
-        <h2>Mein erstes Projekt</h2>
-        <p>Hier entsteht etwas Spannendes – mit HTML, CSS und JavaScript.</p>
-        <button id="colorButton">Farbe ändern</button>
-      </section>
+    <!-- ==================== Hauptbereich ==================== -->
+    <main class="content">
+
+        <!-- Begrüßungs‑Textblock -->
+        <section class="intro">
+            <h2>Willkommen auf meinem Reiseblog!</h2>
+            <p>
+                Hallo liebe Freunde und Familie! Ich bin Amelie und habe ein Jahr in Neuseeland verbracht.
+                Auf dieser Seite erzähle ich von meiner Zeit – von atemberaubenden Landschaften über die
+                faszinierende Maori‑Kultur bis hin zu meinen persönlichen Erlebnissen in Schule und Gastfamilie.
+            </p>
+
+            <!-- Platzhalter‑Portrait‑Bild -->
+            <img src="https://via.placeholder.com/200?text=Portrait"
+                 alt="Portrait von Amelie"
+                 class="portrait">
+        </section>
+
+        <!-- Hinweis: Weitere Blog‑Artikel können hier als <article>-Elemente eingefügt werden -->
     </main>
 
-    <footer>
-      <p>© 2025 – erstellt im Enrichment-Kurs „Mit KI zur eigenen Website“</p>
-      <p>
-	  <!-- ===========================================================
-			Impressum - Bitte nicht verändern! (rechtlich verbindlich)
-		=========================================================== -->
-        <a href="impressum.html" target="_blank" rel="noopener noreferrer">Impressum</a>
-		<a href="impressum_eltern.html" target="_blank" rel="noopener noreferrer">Impressum verantwortliche Eltern</a>
-      </p>
+    <!-- ==================== Footer ==================== -->
+    <footer class="site-footer">
+        <p>&copy; 2025 Amelie – Alle Rechte vorbehalten.</p>
+        <!-- Impressums‑Link (sichtbar dank CSS‑Regel) -->
+        <p><a href="impressum.html" class="footer-link">Impressum</a></p>
     </footer>
 
+    <!-- Optionales JavaScript für kleine Interaktionen -->
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
