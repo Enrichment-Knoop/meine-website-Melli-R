@@ -5,66 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amelie in Neuseeland</title>
 
-    <!-- Verknüpfung zur gemeinsamen CSS‑Datei -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ==================== Header (Banner + Navigation) ==================== -->
-    <header class="site-header">
-        <!-- Platzhalter‑Banner‑Bild -->
-        <img src="https://via.placeholder.com/1200x400?text=Banner+Bild"
-             alt="Banner von Neuseeland"
-             class="banner-image">
+    <!-- ==================== Navbar ==================== -->
+    <header id="navbar" class="navbar">
+        <div class="container nav-container">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">FN</div>
+                <span class="logo-text">FutureNav</span>
+            </div>
 
-        <!-- Große Überschrift im Banner -->
-        <h1 class="site-title">Amelie in Neuseeland</h1>
+            <!-- Desktop‑Navigation -->
+            <nav class="nav-desktop">
+                <a href="#home"        class="nav-link">Startseite</a>
+                <a href="#neuseeland"  class="nav-link">Neuseeland</a>
+                <a href="#anreise"     class="nav-link">An‑ und Abreise</a>
+                <a href="#gastfamilie" class="nav-link">Gastfamilie</a>
+                <a href="#schule"      class="nav-link">Schule</a>
 
-        <!-- Navigation -->
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html">Startseite</a></li>
-                <li><a href="neuseeland.html">Neuseeland</a></li>
-                <li><a href="an-abreise.html">An‑ und Abreise</a></li>
-                <li><a href="gastfamilie.html">Gastfamilie</a></li>
-                <li><a href="schule.html">Schule</a></li>
-                <li><a href="reisen-orte.html">Reisen & Orte</a></li>
-                <li><a href="kultur.html">Kultur</a></li>
-                <li><a href="natur.html">Natur</a></li>
-                <li><a href="impressum.html">Impressum</a></li>
-            </ul>
+                <!-- Dropdown für Reisen & Orte -->
+                <div class="nav-item dropdown">
+                    <a href="#orte" class="nav-link">Reisen & Orte</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#nordinsel" class="dropdown-link">Nordinsel</a></li>
+                        <li><a href="#suedinsel" class="dropdown-link">Südinsel</a></li>
+                    </ul>
+                </div>
+
+                <a href="#kultur" class="nav-link">Kultur</a>
+                <a href="#natur"  class="nav-link">Natur</a>
+                <a href="impressum.html" class="nav-link">Impressum</a>
+            </nav>
+
+            <!-- Mobile‑Button -->
+            <button id="mobile-menu-button" class="mobile-btn" aria-label="Menü öffnen">
+                <span class="bar bar1"></span>
+                <span class="bar bar2"></span>
+                <span class="bar bar3"></span>
+            </button>
+        </div>
+
+        <!-- Mobile‑Navigation -->
+        <nav id="mobile-menu" class="nav-mobile hidden">
+            <a href="#home"        class="mobile-link">Startseite</a>
+            <a href="#neuseeland"  class="mobile-link">Neuseeland</a>
+            <a href="#anreise"     class="mobile-link">An‑ und Abreise</a>
+            <a href="#gastfamilie" class="mobile-link">Gastfamilie</a>
+            <a href="#schule"      class="mobile-link">Schule</a>
+            <a href="#orte"        class="mobile-link">Reisen & Orte</a>
+            <a href="#nordinsel"   class="mobile-link">Nordinsel</a>
+            <a href="#suedinsel"   class="mobile-link">Südinsel</a>
+            <a href="#kultur"      class="mobile-link">Kultur</a>
+            <a href="#natur"       class="mobile-link">Natur</a>
+            <a href="impressum.html" class="mobile-link">Impressum</a>
         </nav>
     </header>
 
-    <!-- ==================== Hauptbereich ==================== -->
-    <main class="content">
+    <!-- ==================== Hero (Start‑Section) ==================== -->
+    <section id="home" class="section hero">
+        <!-- Videobackground (wird später ersetzt) -->
+        <video id="hero-video" autoplay muted loop playsinline>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Ihr Browser unterstützt das Video‑Tag nicht.
+        </video>
 
-        <!-- Begrüßungs‑Textblock -->
-        <section class="intro">
-            <h2>Willkommen auf meinem Reiseblog!</h2>
-            <p>
-                Hallo liebe Freunde und Familie! Ich bin Amelie und habe ein Jahr in Neuseeland verbracht.
-                Auf dieser Seite erzähle ich von meiner Zeit – von atemberaubenden Landschaften über die
-                faszinierende Maori‑Kultur bis hin zu meinen persönlichen Erlebnissen in Schule und Gastfamilie.
+        <!-- Inhalt – zunächst unsichtbar, erscheint beim Scrollen -->
+        <div class="container hero-content">
+            <h1 class="hero-title">Amelie in Neuseeland</h1>
+
+            <p class="hero-subtitle">
+                <em>Platzhalter‑Text: In Kürze folgt eine kompakte Einführung zu meinem Auslandsjahr, inklusive wichtiger Eckdaten und ein paar Bilder.</em>
             </p>
 
-            <!-- Platzhalter‑Portrait‑Bild -->
-            <img src="https://via.placeholder.com/200?text=Portrait"
-                 alt="Portrait von Amelie"
-                 class="portrait">
-        </section>
+            <div class="hero-images">
+                <img src="https://via.placeholder.com/300x200?text=Bild+1"
+                     alt="Platzhalter Bild 1"
+                     class="hero-portrait">
+                <img src="https://via.placeholder.com/300x200?text=Bild+2"
+                     alt="Platzhalter Bild 2"
+                     class="hero-portrait">
+                <img src="https://via.placeholder.com/300x200?text=Bild+3"
+                     alt="Platzhalter Bild 3"
+                     class="hero-portrait">
+            </div>
+        </div>
+    </section>
 
-        <!-- Hinweis: Weitere Blog‑Artikel können hier als <article>-Elemente eingefügt werden -->
-    </main>
-
-    <!-- ==================== Footer ==================== -->
-    <footer class="site-footer">
-        <p>&copy; 2025 Amelie – Alle Rechte vorbehalten.</p>
-        <!-- Impressums‑Link (sichtbar dank CSS‑Regel) -->
-        <p><a href="impressum.html" class="footer-link">Impressum</a></p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>&copy; 2025 Amelie – Alle Rechte vorbehalten.</p>
+            <a href="impressum.html" class="footer-link">Impressum</a>
+        </div>
     </footer>
 
-    <!-- Optionales JavaScript für kleine Interaktionen -->
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>

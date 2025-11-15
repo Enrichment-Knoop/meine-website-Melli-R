@@ -1,144 +1,307 @@
 /* --------------------------------------------------------------
-   style.css – Styling für „Amelie in Neuseeland“
+   style.css – Stil für „Amelie in Neuseeland“
    -------------------------------------------------------------- */
 
-/* ---------- Farbvariablen ------------------------------------------------- */
+/* ---------- Farbvariablen ---------- */
 :root {
-    --primary-color:   #a0c4ff;   /* helles Blau – sommerlich */
-    --accent-color:    #ffb703;   /* warmes Gelb für Akzente */
-    --text-color:      #333333;   /* dunkles Grau für guten Kontrast */
-    --bg-color:        #f5faff;   /* sehr helles Blau als Seiten‑Hintergrund */
+    --primary:            #0ea5e9;
+    --accent:             #7c3aed;
+    --navbar-bg:          #2e6bac;
+    --navbar-bg-scrolled: #2e6bac;
+    --navbar-text:        #D6E8FD;
+    --navbar-hover:       #CFE6FE;
+    --navbar-underline:   #F6FAFF;
+    --dropdown-bg:        #D6E8FD;
+    --dropdown-text:      #2e6bac;
+    --dropdown-hover:     #537DAB;
+    --dropdown-underline: #274564;
+    --dropdown-hover-bg:  rgba(255,255,255,0.1);
+    --bg-dark:            #111827;
+    --bg-light:           #f5faff;
+    --text-light:         #f3f4f6;
+    --text-dark:          #1f2937;
 }
 
-/* ---------- Basis‑Stile --------------------------------------------------- */
-* {
+/* ---------- Reset & Grundlayout ---------- */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
-
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    background-image: url('https://via.placeholder.com/200x200?text=Maori+Muster');
-    background-repeat: repeat;
 }
 
-/* ---------- Header & Banner ------------------------------------------------ */
-.site-header {
+/* ---------- Container ---------- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(124,58,237,0.3);
+    z-index: 1000;
+    height: 70px;
+    transition: background 0.3s ease;
+}
+.navbar.scrolled { background: var(--navbar-bg-scrolled); }
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: var(--navbar-text);
+}
+.logo-icon {
+    width: 2rem; height: 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #111827;
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .4rem;
+    box-shadow: 0 0 8px rgba(124,58,237,.5);
+}
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* ---------- Desktop‑Navigation ---------- */
+.nav-desktop {
+    display: none;
+    gap: 1rem;
+}
+.nav-desktop .nav-link {
     position: relative;
+    padding: .4rem .6rem;
+    color: var(--navbar-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .2s;
+}
+.nav-desktop .nav-link:hover,
+.nav-desktop .nav-link.active { color: var(--navbar-hover); }
+.nav-desktop .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--navbar-underline);
+    transform: translateX(-50%);
+    transition: width .3s ease, left .3s ease;
+}
+.nav-desktop .nav-link:hover::after,
+.nav-desktop .nav-link.active::after { width: 80%; }
+
+/* ---------- Dropdown (Desktop) ---------- */
+.dropdown { position: relative; display: inline-flex; align-items: center; }
+.dropdown-menu {
+    list-style: none;
+    margin: 0; padding: 0;
+    position: absolute;
+    top: 100%; left: 0;
+    background: var(--dropdown-bg);
+    min-width: 150px;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: .4rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity .2s ease, transform .2s ease;
+    z-index: 20;
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.dropdown-link {
+    display: block;
+    padding: .6rem 1rem;
+    color: var(--dropdown-text);
+    text-decoration: none;
+    font-size: .95rem;
+    position: relative;
+    transition: background .2s, color .2s;
+}
+.dropdown-link:hover,
+.dropdown-link.active {
+    background: var(--dropdown-hover-bg);
+    color: var(--dropdown-hover);
+}
+.dropdown-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--dropdown-underline);
+    transform: translateX(-50%);
+    transition: width .3s ease, left .3s ease;
+}
+.dropdown-link:hover::after,
+.dropdown-link.active::after { width: 80%; }
+
+/* ---------- Mobile‑Button ---------- */
+.mobile-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.bar {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--navbar-text);
+    border-radius: 2px;
+    transition: transform .3s, opacity .2s;
+}
+.mobile-btn.active .bar1 { transform: rotate(45deg) translate(5px,5px); }
+.mobile-btn.active .bar2 { opacity: 0; }
+.mobile-btn.active .bar3 { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* ---------- Mobile‑Navigation ---------- */
+.nav-mobile {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-dark);
+}
+.mobile-link {
+    padding: .8rem 1rem;
+    color: var(--text-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.mobile-link:hover,
+.mobile-link.active { background: rgba(255,255,255,.1); }
+
+/* ---------- Hero (Start‑Section) ---------- */
+.hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://via.placeholder.com/1200x600?text=Banner') center/cover no-repeat;
     text-align: center;
+    padding-top: 70px;               /* Navbar‑Platz */
     overflow: hidden;
 }
 
-/* Banner‑Bild füllt die gesamte Breite */
-.banner-image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Große Überschrift im Banner */
-.site-title {
+/* Video‑Background */
+#hero-video {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Brush Script MT', cursive;   /* einfache Schreibschrift */
-    font-size: 3rem;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-    margin: 0;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    transition: opacity .8s ease;
 }
 
-/* ---------- Navigation ------------------------------------------------------ */
-.main-nav {
-    background-color: rgba(255,255,255,0.9);
-    padding: 0.5rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+/* Inhalt – zunächst unsichtbar */
+.hero-content {
+    opacity: 0;
+    transition: opacity .8s ease;
 }
 
-.main-nav ul {
-    list-style: none;
+/* Klasse, die beim Scrollen gesetzt wird */
+.hero.show-content #hero-video { opacity: 0; }
+.hero.show-content .hero-content { opacity: 1; }
+
+/* Titel & Untertitel – gewünschte Farbe & Schriftart */
+.hero-title,
+.hero-subtitle {
+    color: #274564;
+    font-family: "Modern No. 20", sans-serif;
+}
+.hero-title {
+    font-size: 2.8rem;
+    margin-bottom: .5rem;
+}
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Bilder‑Layout */
+.hero-images {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 1rem;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: bold;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.main-nav a:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* ---------- Hauptinhalt ---------------------------------------------------- */
-.content {
-    max-width: 960px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-/* Intro‑Bereich */
-.intro {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-/* Portrait‑Bild – Polaroid‑Effekt */
-.portrait {
-    width: 200px;
-    border: 8px solid white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    justify-content: center;
     margin-top: 1rem;
 }
+.hero-portrait {
+    width: 180px;
+    border: 6px solid #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,.3);
+    border-radius: .5rem;
+}
 
-/* ---------- Footer ---------------------------------------------------------- */
-.site-footer {
-    background-color: var(--primary-color);
-    color: white;
+/* ---------- Allgemeine Sektionen ---------- */
+.section {
+    padding: 4rem 0;
+}
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    padding: 2rem 0;
     text-align: center;
-    padding: 1rem 0;
-    margin-top: 4rem;
 }
-
-/* Footer‑Link sichtbar machen */
-.site-footer a.footer-link {
-    color: #ffffff;               /* weiß auf blauem Hintergrund */
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-/* Hover‑Effekt für Footer‑Link */
-.site-footer a.footer-link:hover {
-    color: var(--accent-color);
+.footer-link {
+    color: var(--primary);
     text-decoration: none;
+    margin-left: 1rem;
+}
+.footer-link:hover { text-decoration: underline; }
+
+/* ---------- Responsive ---------- */
+@media (min-width: 768px) {
+    .nav-desktop { display: flex; }
+    .mobile-btn { display: none; }
+    .nav-mobile { display: none !important; }
 }
 
-/* ---------- Responsive Anpassungen ---------------------------------------- */
-@media (max-width: 768px) {
-    .site-title {
-        font-size: 2rem;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-}
+/* ---------- Hilfsklassen ---------- */
+.hidden { display: none; }
