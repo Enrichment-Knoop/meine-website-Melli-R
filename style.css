@@ -32,7 +32,7 @@
 }
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 80px;   /* Höhe der Navbar */
 }
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -64,7 +64,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
 }
 
 /* ---------- Logo ---------- */
@@ -96,7 +95,7 @@ body {
 
 /* ---------- Desktop‑Navigation ---------- */
 .nav-desktop {
-    display: none;
+    display: flex;
     gap: 1rem;
 }
 .nav-desktop .nav-link {
@@ -211,75 +210,51 @@ body {
 .mobile-link:hover,
 .mobile-link.active { background: rgba(255,255,255,.1); }
 
-/* ---------- Hero (Start‑Section) ---------- */
+/* ---------- Hero (Video‑Banner) ---------- */
 .hero {
     position: relative;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('https://via.placeholder.com/1200x600?text=Banner') center/cover no-repeat;
-    text-align: center;
-    padding-top: 70px;               /* Navbar‑Platz */
+    height: 100vh;               /* volle Höhe des Viewports */
+    width: 100%;
     overflow: hidden;
+    opacity: 1;
+    transition: opacity .8s ease;
 }
+.hero.hidden { opacity: 0; }    /* Fade‑Out */
 
-/* Video‑Background */
+/* Video‑Background – füllt den gesamten Hero‑Bereich */
 #hero-video {
     position: absolute;
     top: 0; left: 0;
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     z-index: -1;
-    transition: opacity .8s ease;
 }
 
-/* Inhalt – zunächst unsichtbar */
-.hero-content {
-    opacity: 0;
-    transition: opacity .8s ease;
-}
-
-/* Klasse, die beim Scrollen gesetzt wird */
-.hero.show-content #hero-video { opacity: 0; }
-.hero.show-content .hero-content { opacity: 1; }
-
-/* Titel & Untertitel – gewünschte Farbe & Schriftart */
-.hero-title,
-.hero-subtitle {
-    color: #274564;
-    font-family: "Modern No. 20", sans-serif;
-}
+/* Titel‑Overlay – mittig, weiß, mit leichtem Schatten */
 .hero-title {
-    font-size: 2.8rem;
-    margin-bottom: .5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    z-index: 1;
 }
-.hero-subtitle {
+
+/* ---------- Platzhalter‑Text ---------- */
+.placeholder-text {
+    text-align: center;
     font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    color: #274564;
+    margin: 2rem 0;
+    opacity: 0; /* Start mit unsichtbar */
+    transition: opacity .8s ease; /* Übergang für Fade-In */
 }
-
-/* Bilder‑Layout */
-.hero-images {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 1rem;
-}
-.hero-portrait {
-    width: 180px;
-    border: 6px solid #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,.3);
-    border-radius: .5rem;
-}
-
-/* ---------- Allgemeine Sektionen ---------- */
-.section {
-    padding: 4rem 0;
-}
-.section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+.placeholder-text.visible { 
+    opacity: 1; /* Sichtbar, wenn die Klasse hinzugefügt wird */
 }
 
 /* ---------- Footer ---------- */
@@ -296,12 +271,12 @@ body {
 }
 .footer-link:hover { text-decoration: underline; }
 
-/* ---------- Responsive ---------- */
+/* ---------- Responsives ---------- */
 @media (min-width: 768px) {
     .nav-desktop { display: flex; }
-    .mobile-btn { display: none; }
-    .nav-mobile { display: none !important; }
+    .mobile-btn   { display: none; }
+    .nav-mobile   { display: none !important; }
 }
 
 /* ---------- Hilfsklassen ---------- */
-.hidden { display: none; }
+.hidden { display: none; }   /* nur für das erste Laden des Textes */

@@ -1,6 +1,5 @@
 /* --------------------------------------------------------------
-   script.js – Navigation, Mobile‑Menu, Scroll‑Highlight,
-               Hero‑Fade‑Out & Content‑Einblenden
+   script.js – Navigation, Mobile‑Menu & Scroll‑Logik
    -------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,9 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks        = document.querySelectorAll('.nav-link');
     const dropdownLinks   = document.querySelectorAll('.dropdown-link');
     const mobileNavLinks  = document.querySelectorAll('.mobile-link');
-    const sections        = document.querySelectorAll('section');
-    const heroSection     = document.querySelector('.hero');
-    const heroVideo       = document.getElementById('hero-video');
+    const heroSection     = document.getElementById('hero');
+    const placeholderDiv   = document.getElementById('placeholder');
 
     /* ---- Mobile‑Menu öffnen / schließen ---- */
     mobileBtn.addEventListener('click', () => {
@@ -30,39 +28,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ---- Scroll‑Behaviours ---- */
+    /* ---- Scroll‑Verhalten ---- */
     window.addEventListener('scroll', () => {
-        /* Navbar‑Hintergrund */
+        /* 1️⃣ Navbar‑Hintergrund bei Scroll */
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
 
-        /* Hero‑Fade‑Out & Content‑Einblenden */
-        if (heroSection && heroVideo) {
-            const triggerPoint = window.innerHeight * 0.6; // 60 % der Viewport‑Höhe
-            if (window.scrollY > triggerPoint) {
-                heroSection.classList.add('show-content');
-            } else {
-                heroSection.classList.remove('show-content');
-            }
+        /* 2️⃣ Video ausblenden / Platzhalter‑Text einblenden */
+        const trigger = window.innerHeight * 0.6; // 60 % des Viewports
+        if (window.scrollY > trigger) {
+            heroSection.classList.add('hidden');          // Video verschwindet
+            placeholderDiv.classList.remove('hidden');    // Text erscheint
+            placeholderDiv.classList.add('visible');       // Text wird sichtbar
+        } else {
+            heroSection.classList.remove('hidden');
+            placeholderDiv.classList.remove('visible');    // Text wird unsichtbar
+            placeholderDiv.classList.add('hidden');        // Text wird ausgeblendet
         }
 
-        /* Aktiven Abschnitt im Menü markieren */
+        /* 3️⃣ Aktiven Menü‑Eintrag markieren */
         highlightCurrentSection();
     });
 
-    /* ---- Smooth‑Scroll für alle Links ---- */
+    /* ---- Smooth‑Scroll für interne Links ---- */
     const allLinks = [...navLinks, ...dropdownLinks, ...mobileNavLinks];
     allLinks.forEach(link => {
         link.addEventListener('click', e => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const target   = document.querySelector(targetId);
-            if (target) {
-                const offset = target.offsetTop - 70; // Navbar‑Höhe
-                window.scrollTo({ top: offset, behavior: 'smooth' });
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const offset = target.offsetTop - 70; // Navbar‑Höhe
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
             }
         });
     });
@@ -86,6 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-    // Initiales Highlight beim Laden
+    // Beim Laden gleich das korrekte Highlight setzen
     highlightCurrentSection();
 });
