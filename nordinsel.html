@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nordinsel - Amelie in Neuseeland</title>
+    <title>Nordinsel – Amelie in Neuseeland</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="stylesheet" href="style.css?v=1.0">
 </head>
 <body>
 
@@ -17,37 +16,42 @@
                 <div class="logo-icon">FN</div>
                 <span class="logo-text">FutureNav</span>
             </div>
+
             <nav class="nav-desktop">
                 <a href="index.html" class="nav-link">Startseite</a>
                 <a href="neuseeland.html" class="nav-link">Neuseeland</a>
                 <a href="an-und_abreise.html" class="nav-link">An‑ und Abreise</a>
                 <a href="gastfamilie.html" class="nav-link">Gastfamilie</a>
                 <a href="schule.html" class="nav-link">Schule</a>
+
                 <div class="nav-item dropdown">
-                    <a href="#orte" class="nav-link">Reisen & Orte</a>
+                    <a href="#orte" class="nav-link active">Reisen & Orte</a>
                     <ul class="dropdown-menu">
-                        <li><a href="nordinsel.html" class="dropdown-link">Nordinsel</a></li>
+                        <li><a href="nordinsel.html" class="dropdown-link active">Nordinsel</a></li>
                         <li><a href="suedinsel.html" class="dropdown-link">Südinsel</a></li>
                     </ul>
                 </div>
+
                 <a href="kultur.html" class="nav-link">Kultur</a>
                 <a href="natur.html" class="nav-link">Natur</a>
                 <a href="impressum.html" class="nav-link">Impressum</a>
             </nav>
+
             <button id="mobile-menu-button" class="mobile-btn" aria-label="Menü öffnen">
                 <span class="bar bar1"></span>
                 <span class="bar bar2"></span>
                 <span class="bar bar3"></span>
             </button>
         </div>
+
         <nav id="mobile-menu" class="nav-mobile hidden">
             <a href="index.html" class="mobile-link">Startseite</a>
             <a href="neuseeland.html" class="mobile-link">Neuseeland</a>
             <a href="an-und_abreise.html" class="mobile-link">An‑ und Abreise</a>
             <a href="gastfamilie.html" class="mobile-link">Gastfamilie</a>
             <a href="schule.html" class="mobile-link">Schule</a>
-            <a href="orte.html" class="mobile-link">Reisen & Orte</a>
-            <a href="nordinsel.html" class="mobile-link">Nordinsel</a>
+            <a href="orte.html" class="mobile-link active">Reisen & Orte</a>
+            <a href="nordinsel.html" class="mobile-link active">Nordinsel</a>
             <a href="suedinsel.html" class="mobile-link">Südinsel</a>
             <a href="kultur.html" class="mobile-link">Kultur</a>
             <a href="natur.html" class="mobile-link">Natur</a>
@@ -55,19 +59,33 @@
         </nav>
     </header>
 
-    <!-- ==================== Banner ==================== -->
-    <section class="banner">
-        <img src="img/platzhalter_farn.jpg" alt="Banner Nordinsel">
-        <h1 class="banner-title">Nordinsel</h1>
+    <!-- ==================== Hero ==================== -->
+    <section id="hero" class="hero">
+        <img id="hero-img-1"
+             class="hero-img visible"
+             src="img/nordinsel-banner.jpg"
+             alt="Banner Nordinsel">
+        <h1 class="hero-title">Nordinsel</h1>
     </section>
 
-    <!-- ==================== Inhalt ==================== -->
-    <div class="container">
-        <h1>Nordinsel</h1>
-        <p>Hier wird bald mehr über die Nordinsel in Neuseeland stehen!</p>
-    </div>
+    <!-- ==================== Intro (Platzhalter) ==================== -->
+    <section class="intro">
+        <div class="container">
+            <p class="intro-text">
+                Die Nordinsel ist das pulsierende Herz Neuseelands – hier treffen
+                moderne Städte auf atemberaubende Natur. In diesem Abschnitt bekommst du
+                einen Überblick über die wichtigsten Highlights: die Hauptstadt Wellington,
+                das kulturelle Zentrum Auckland, die vulkanische Landschaft des Taupo‑Gebiets,
+                die heißen Quellen von Rotorua und die malerischen Strände der Bay of Islands.
+                Ich berichte von meinen Lieblingsorten, empfehle Aktivitäten (Wandern,
+                Surfen, Thermalbäder) und gebe praktische Tipps zu Anreise, Unterkünften
+                und öffentlichen Verkehrsmitteln. So kannst du deine Nordinsel‑Tour optimal
+                planen und das Beste aus diesem vielseitigen Teil Neuseelands herausholen.
+            </p>
+        </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- ==================== Footer ==================== -->
     <footer class="footer">
         <div class="container footer-inner">
             <p>&copy; 2025 Amelie – Alle Rechte vorbehalten.</p>
@@ -75,7 +93,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Scroll‑to‑Top‑Button -->
+    <button id="topBtn" aria-label="Nach oben scrollen">↑</button>
+
     <script src="script.js?v=1.0"></script>
 </body>
 </html>

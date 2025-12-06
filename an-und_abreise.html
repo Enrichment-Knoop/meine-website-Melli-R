@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>An- und Abreise - Amelie in Neuseeland</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <title>An‑ und Abreise – Amelie in Neuseeland</title>
+    <link rel="stylesheet" href="style.css?v=1.0">
 </head>
 <body>
 
@@ -17,12 +15,14 @@
                 <div class="logo-icon">FN</div>
                 <span class="logo-text">FutureNav</span>
             </div>
+
             <nav class="nav-desktop">
                 <a href="index.html" class="nav-link">Startseite</a>
                 <a href="neuseeland.html" class="nav-link">Neuseeland</a>
-                <a href="an-und_abreise.html" class="nav-link">An‑ und Abreise</a>
+                <a href="an-und_abreise.html" class="nav-link active">An‑ und Abreise</a>
                 <a href="gastfamilie.html" class="nav-link">Gastfamilie</a>
                 <a href="schule.html" class="nav-link">Schule</a>
+
                 <div class="nav-item dropdown">
                     <a href="#orte" class="nav-link">Reisen & Orte</a>
                     <ul class="dropdown-menu">
@@ -30,20 +30,23 @@
                         <li><a href="suedinsel.html" class="dropdown-link">Südinsel</a></li>
                     </ul>
                 </div>
+
                 <a href="kultur.html" class="nav-link">Kultur</a>
                 <a href="natur.html" class="nav-link">Natur</a>
                 <a href="impressum.html" class="nav-link">Impressum</a>
             </nav>
+
             <button id="mobile-menu-button" class="mobile-btn" aria-label="Menü öffnen">
                 <span class="bar bar1"></span>
                 <span class="bar bar2"></span>
                 <span class="bar bar3"></span>
             </button>
         </div>
+
         <nav id="mobile-menu" class="nav-mobile hidden">
             <a href="index.html" class="mobile-link">Startseite</a>
             <a href="neuseeland.html" class="mobile-link">Neuseeland</a>
-            <a href="an-und_abreise.html" class="mobile-link">An‑ und Abreise</a>
+            <a href="an-und_abreise.html" class="mobile-link active">An‑ und Abreise</a>
             <a href="gastfamilie.html" class="mobile-link">Gastfamilie</a>
             <a href="schule.html" class="mobile-link">Schule</a>
             <a href="orte.html" class="mobile-link">Reisen & Orte</a>
@@ -55,18 +58,33 @@
         </nav>
     </header>
 
-    <!-- ==================== Banner ==================== -->
-    <section class="banner">
-        <img src="img/platzhalter_farn.jpg" alt="Banner An- und Abreise">
-        <h1 class="banner-title">An- und Abreise</h1>
+    <!-- ==================== Hero ==================== -->
+    <section id="hero" class="hero">
+        <img id="hero-img-1"
+             class="hero-img visible"
+             src="img/an-und-abreise-banner.jpg"
+             alt="Banner An‑ und Abreise">
+        <h1 class="hero-title">An‑ und Abreise</h1>
     </section>
 
-    <!-- ==================== Inhalt ==================== -->
-    <div class="container">
-        <p>Hier wird bald mehr über meine An- und Abreise nach Neuseeland stehen!</p>
-    </div>
+    <!-- ==================== Intro ==================== -->
+    <section class="intro">
+        <div class="container">
+            <p class="intro-text">
+                Der Weg nach Neuseeland beginnt mit einer guten Planung. In diesem Abschnitt
+                erfährst du alles, was du für die An‑ und Abreise wissen musst: von den
+                besten Flugverbindungen über Visa‑Bestimmungen bis hin zu Tipps für den
+                Transfer vom Flughafen zu deiner Gastfamilie. Ich teile meine persönlichen
+                Erfahrungen mit den Fluggesellschaften, empfehle sinnvolle Zwischenstopps und
+                zeige, wie du Stress beim Einchecken vermeidest. Außerdem gibt es
+                praktische Hinweise zu Gepäckbestimmungen, Reiseversicherungen und den
+                ersten Schritten nach der Landung – damit du entspannt und gut vorbereitet
+                in dein Abenteuer starten kannst.
+            </p>
+        </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- ==================== Footer ==================== -->
     <footer class="footer">
         <div class="container footer-inner">
             <p>&copy; 2025 Amelie – Alle Rechte vorbehalten.</p>
@@ -74,7 +92,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Scroll‑to‑Top‑Button -->
+    <button id="topBtn" aria-label="Nach oben scrollen">↑</button>
+
     <script src="script.js?v=1.0"></script>
 </body>
 </html>
